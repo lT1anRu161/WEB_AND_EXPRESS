@@ -1,3 +1,4 @@
+const cool = require('cool-ascii-faces')
 const express = require('express')
 const cors = require('cors')
 
@@ -118,8 +119,12 @@ app.post('/api/notes', (req, res) => {
     res.json(newNote)
 })
 
-const PORT = 3001
+app.get('/cool', (req, res) => {
+    res.send(cool())
+})
 
-app.listen(process.env.PORT || PORT, () => {
+const PORT = process.env.PORT || PORT
+
+app.listen(PORT, () => {
     console.log(`Web Server running at http://localhost:${PORT}`)
 })
